@@ -1,0 +1,44 @@
+﻿Dataset:
+    study_hours  attendance  result
+0             1          55       0
+1             2          60       0
+2             2          65       0
+3             3          70       1
+4             4          75       1
+5             5          80       1
+6             6          85       1
+7             7          90       1
+8             1          50       0
+9             3          68       0
+10            4          78       1
+11            6          88       1
+
+Actual:
+[0 1 1]
+Predicted:
+[1 1 1]
+
+Accuracy: 0.6666666666666666
+Accuracy Percentage: 66.66666666666666 %
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00         1
+           1       0.67      1.00      0.80         2
+
+    accuracy                           0.67         3
+   macro avg       0.33      0.50      0.40         3
+weighted avg       0.44      0.67      0.53         3
+
+New Student -> Study Hours = 5, Attendance = 82%
+Prediction: PASS
+
+Multiple Student Predictions:
+Student 1 Study Hours: 1 Attendance: 50 Prediction: PASS
+Student 2 Study Hours: 2 Attendance: 60 Prediction: PASS
+Student 3 Study Hours: 4 Attendance: 75 Prediction: PASS
+Student 4 Study Hours: 5 Attendance: 82 Prediction: PASS
+Student 5 Study Hours: 7 Attendance: 95 Prediction: PASS
+
+Saved dataset visualization to outputs/dataset_scatter.png

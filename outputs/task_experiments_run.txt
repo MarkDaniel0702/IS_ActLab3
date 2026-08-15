@@ -1,0 +1,202 @@
+﻿======================================================================
+TASK 1 BASELINE (12 students, (5,), relu) - for comparison
+======================================================================
+
+--- Baseline: 12 students, (5,), relu ---
+rows=12  hidden_layer_sizes=(5,)  activation=relu  scaled=False
+Actual:    [0 1 1]
+Predicted: [1 1 1]
+Accuracy: 0.6667  (66.67%)
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00         1
+           1       0.67      1.00      0.80         2
+
+    accuracy                           0.67         3
+   macro avg       0.33      0.50      0.40         3
+weighted avg       0.44      0.67      0.53         3
+
+
+======================================================================
+TASK 2 - Change the Dataset (added 5 students -> 17 total)
+======================================================================
+
+Added students:
+ study_hours  attendance result
+           8          92   Pass
+           2          58   Fail
+           5          84   Pass
+           3          62   Fail
+           7          95   Pass
+
+--- Task 2: 17 students, (5,), relu ---
+rows=17  hidden_layer_sizes=(5,)  activation=relu  scaled=False
+Actual:    [1 0 1 0 1]
+Predicted: [1 1 1 1 1]
+Accuracy: 0.6000  (60.00%)
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00         2
+           1       0.60      1.00      0.75         3
+
+    accuracy                           0.60         5
+   macro avg       0.30      0.50      0.38         5
+weighted avg       0.36      0.60      0.45         5
+
+
+Task 2 answer -> accuracy changed from 0.6667 to 0.6000. Reason: the test split grew from 3 to 5 samples, so each prediction now swings the score by 20.0% instead of 33.3%, and the added rows shift where the model's decision boundary needs to sit.
+
+======================================================================
+TASK 3 - Change the Neural Network (hidden_layer_sizes)
+======================================================================
+
+--- Task 3a: 17 students, (5,), relu ---
+rows=17  hidden_layer_sizes=(5,)  activation=relu  scaled=False
+Actual:    [1 0 1 0 1]
+Predicted: [1 1 1 1 1]
+Accuracy: 0.6000  (60.00%)
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00         2
+           1       0.60      1.00      0.75         3
+
+    accuracy                           0.60         5
+   macro avg       0.30      0.50      0.38         5
+weighted avg       0.36      0.60      0.45         5
+
+
+--- Task 3b: 17 students, (10,), relu ---
+rows=17  hidden_layer_sizes=(10,)  activation=relu  scaled=False
+Actual:    [1 0 1 0 1]
+Predicted: [0 0 0 0 0]
+Accuracy: 0.4000  (40.00%)
+              precision    recall  f1-score   support
+
+           0       0.40      1.00      0.57         2
+           1       0.00      0.00      0.00         3
+
+    accuracy                           0.40         5
+   macro avg       0.20      0.50      0.29         5
+weighted avg       0.16      0.40      0.23         5
+
+
+--- Task 3c: 17 students, (10, 5), relu ---
+rows=17  hidden_layer_sizes=(10, 5)  activation=relu  scaled=False
+Actual:    [1 0 1 0 1]
+Predicted: [1 0 0 0 1]
+Accuracy: 0.8000  (80.00%)
+              precision    recall  f1-score   support
+
+           0       0.67      1.00      0.80         2
+           1       1.00      0.67      0.80         3
+
+    accuracy                           0.80         5
+   macro avg       0.83      0.83      0.80         5
+weighted avg       0.87      0.80      0.80         5
+
+
+Task 3 answer -> (5,) gave 0.6000, (10,) gave 0.4000, (10, 5) [a second hidden layer] gave 0.8000. With only 17 training rows, more neurons/layers means more parameters than the data can reliably constrain, so accuracy does not simply go up with network size.
+
+======================================================================
+TASK 4 - Change the Activation Function (relu vs logistic)
+======================================================================
+
+--- Task 4a: 17 students, (5,), relu ---
+rows=17  hidden_layer_sizes=(5,)  activation=relu  scaled=False
+Actual:    [1 0 1 0 1]
+Predicted: [1 1 1 1 1]
+Accuracy: 0.6000  (60.00%)
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00         2
+           1       0.60      1.00      0.75         3
+
+    accuracy                           0.60         5
+   macro avg       0.30      0.50      0.38         5
+weighted avg       0.36      0.60      0.45         5
+
+
+--- Task 4b: 17 students, (5,), logistic ---
+rows=17  hidden_layer_sizes=(5,)  activation=logistic  scaled=False
+Actual:    [1 0 1 0 1]
+Predicted: [1 1 1 1 1]
+Accuracy: 0.6000  (60.00%)
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00         2
+           1       0.60      1.00      0.75         3
+
+    accuracy                           0.60         5
+   macro avg       0.30      0.50      0.38         5
+weighted avg       0.36      0.60      0.45         5
+
+
+Task 4 answer -> relu gave 0.6000, logistic gave 0.6000. The result did not change, because relu and logistic (sigmoid) shape the hidden-layer outputs differently, which changes how the network's decision boundary is learned during backpropagation.
+
+======================================================================
+TASK 5 - Test Your Own Student
+======================================================================
+Own student (Study Hours=6, Attendance=88) -> Prediction: PASS
+Borderline student (Study Hours=3, Attendance=62) -> Prediction: PASS
+
+======================================================================
+APPENDIX - Feature scaling (StandardScaler), not required by the handout, included to explain the accuracy swings above
+======================================================================
+
+--- Appendix: 17 students, (5,), relu, scaled ---
+rows=17  hidden_layer_sizes=(5,)  activation=relu  scaled=True
+Actual:    [1 0 1 0 1]
+Predicted: [1 0 1 0 1]
+Accuracy: 1.0000  (100.00%)
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00         2
+           1       1.00      1.00      1.00         3
+
+    accuracy                           1.00         5
+   macro avg       1.00      1.00      1.00         5
+weighted avg       1.00      1.00      1.00         5
+
+
+--- Appendix: 17 students, (10,), relu, scaled ---
+rows=17  hidden_layer_sizes=(10,)  activation=relu  scaled=True
+Actual:    [1 0 1 0 1]
+Predicted: [1 0 1 0 1]
+Accuracy: 1.0000  (100.00%)
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00         2
+           1       1.00      1.00      1.00         3
+
+    accuracy                           1.00         5
+   macro avg       1.00      1.00      1.00         5
+weighted avg       1.00      1.00      1.00         5
+
+
+--- Appendix: 17 students, (10, 5), relu, scaled ---
+rows=17  hidden_layer_sizes=(10, 5)  activation=relu  scaled=True
+Actual:    [1 0 1 0 1]
+Predicted: [1 0 1 0 1]
+Accuracy: 1.0000  (100.00%)
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00         2
+           1       1.00      1.00      1.00         3
+
+    accuracy                           1.00         5
+   macro avg       1.00      1.00      1.00         5
+weighted avg       1.00      1.00      1.00         5
+
+
+======================================================================
+SUMMARY TABLE - all variants
+======================================================================
+                                       label  rows hidden_layer_sizes activation  scaled  n_test  accuracy
+           Baseline: 12 students, (5,), relu    12               (5,)       relu   False       3  0.666667
+             Task 2: 17 students, (5,), relu    17               (5,)       relu   False       5  0.600000
+           Task 3b: 17 students, (10,), relu    17              (10,)       relu   False       5  0.400000
+         Task 3c: 17 students, (10, 5), relu    17            (10, 5)       relu   False       5  0.800000
+        Task 4b: 17 students, (5,), logistic    17               (5,)   logistic   False       5  0.600000
+   Appendix: 17 students, (5,), relu, scaled    17               (5,)       relu    True       5  1.000000
+  Appendix: 17 students, (10,), relu, scaled    17              (10,)       relu    True       5  1.000000
+Appendix: 17 students, (10, 5), relu, scaled    17            (10, 5)       relu    True       5  1.000000
