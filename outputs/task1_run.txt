@@ -1,4 +1,4 @@
-﻿Dataset:
+Dataset:
     study_hours  attendance  result
 0             1          55       0
 1             2          60       0
@@ -35,10 +35,10 @@ New Student -> Study Hours = 5, Attendance = 82%
 Prediction: PASS
 
 Multiple Student Predictions:
-Student 1 Study Hours: 1 Attendance: 50 Prediction: PASS
-Student 2 Study Hours: 2 Attendance: 60 Prediction: PASS
+Student 1 Study Hours: 5 Attendance: 10 Prediction: PASS
+Student 2 Study Hours: 6 Attendance: 0 Prediction: FAIL
 Student 3 Study Hours: 4 Attendance: 75 Prediction: PASS
 Student 4 Study Hours: 5 Attendance: 82 Prediction: PASS
-Student 5 Study Hours: 7 Attendance: 95 Prediction: PASS
+Student 5 Study Hours: 0 Attendance: 100 Prediction: FAIL
 
 Saved dataset visualization to outputs/dataset_scatter.png

@@ -84,11 +84,11 @@ else:
 
 # 5.11 Test Multiple Students
 new_students = [
-    [1, 50],
-    [2, 60],
+    [5, 10],
+    [6, 0],
     [4, 75],
     [5, 82],
-    [7, 95]
+    [0, 100]
 ]
 
 predictions = model.predict(new_students)
